@@ -1,15 +1,10 @@
-# Todo List App With Vue 3
-
-This is a Todo List App for the Vue 3 practice
+# Todo List With Vue3
 
 ## Development
 
-This project has a `docker-compose.yml` file, which will start the mkdocs application on your
-local machine and help you see changes instantly.
-
-```bash
-docker-compose up
-```
+1. docker-compose up
+2. cd app
+3. yarn serve
 
 ## References
 
