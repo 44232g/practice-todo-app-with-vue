@@ -40,14 +40,14 @@ export default {
             this.$emit('updateTask', this.id, this.taskName, completed);
         },
         changeEditState: function(e) {
-            const isEdit = this.$el.contains(e.target) ? true : false;
-            if (isEdit) {
+            const clicked = this.$el.contains(e.target) ? true : false;
+            if (clicked) {
                 this.$refs.taskNameInput.focus();
                 this.$refs.taskNameInput.select();
+                this.$emit('changeEditState', this.id, clicked);
             } else {
-                this.updateTask(false);
+                this.isEdit && this.updateTask(false);
             }
-            this.$emit('changeEditState', this.id, isEdit);
         },
     },
     emits: ['updateTask', 'changeEditState'],
