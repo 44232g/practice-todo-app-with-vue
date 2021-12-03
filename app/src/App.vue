@@ -1,22 +1,9 @@
 <template>
-    <div>
-        <div>
-            <TodoList />
-        </div>
-        <div>
-            <TaskList
-                :tasks="tasks"
-                @createNewTask="createNewTask"
-                @addTask="addTask"
-                @doneTask="doneTask"
-                @changeEditState="changeEditState"
-            />
-        </div>
-    </div>
+    <TodoList />
 </template>
 
 <script>
-import TodoList from './components/templates/TodoList.vue';
+import TodoList from './components/pages/TodoList.vue';
 
 export default {
     name: 'App',

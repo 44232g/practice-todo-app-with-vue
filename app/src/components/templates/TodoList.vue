@@ -5,7 +5,7 @@
         </div>
         <div>
             <TaskList
-                :tasks="computedTasks"
+                :tasks="tasks"
                 @createTask="createTask"
                 @updateTask="updateTask"
                 @changeEditState="changeEditState"
@@ -24,52 +24,21 @@ export default {
         AppName,
         TaskList,
     },
-    data() {
-        return { tasks: [] };
+    props: {
+        tasks: { type: Array, required: true },
     },
     methods: {
-        createTask: async function() {
-            const response = await fetch('/items', {
-                method: 'POST',
-                body: JSON.stringify({ name: '' }),
-                headers: { 'Content-Type': 'application/json' },
-            });
-            const task = await response.json();
-            this.tasks.push({ ...task, isEdit: true });
+        createTask: function() {
+            this.$emit('createTask');
         },
         updateTask: async function(id, name, completed) {
-            const response = await fetch(`/items/${id}`, {
-                method: 'PUT',
-                body: JSON.stringify({
-                    name,
-                    completed,
-                }),
-                headers: { 'Content-Type': 'application/json' },
-            });
-            const updatedTask = await response.json();
-            this.tasks = this.tasks.map(task => {
-                return task.id !== id
-                    ? { ...task, isEdit: false }
-                    : { ...updatedTask, isEdit: false };
-            });
+            this.$emit('updateTask', id, name, completed);
         },
         changeEditState: function(id, isEdit) {
-            const task = this.tasks.find(task => task.id === id);
-            task.isEdit = isEdit;
+            this.$emit('changeEditState', id, isEdit);
         },
     },
-    async beforeMount() {
-        const data = await fetch('/items');
-        const json = await data.json();
-        this.tasks = json.map(it => {
-            return { ...it, isEdit: false };
-        });
-    },
-    computed: {
-        computedTasks() {
-            return this.tasks.filter(it => !it.completed).reverse();
-        },
-    },
+    emits: ['createTask', 'updateTask', 'changeEditState'],
 };
 </script>
 
