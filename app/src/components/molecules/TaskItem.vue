@@ -2,12 +2,12 @@
     <div class="task-item">
         <div class="task-left">
             <div class="task-checkbox">
-                <CheckBox @check="updateTask(true)" />
+                <AppCheckBox @check="updateTask(true)" />
             </div>
         </div>
         <div class="task-right">
             <div class="task-input">
-                <TextField
+                <AppTextField
                     ref="taskNameInput"
                     :value="taskName"
                     @update="taskName = $event"
@@ -18,17 +18,17 @@
 </template>
 
 <script>
-import CheckBox from '../atoms/AppCheckBox.vue';
-import TextField from '../atoms/AppTextField.vue';
+import AppCheckBox from '../atoms/AppCheckBox.vue';
+import AppTextField from '../atoms/AppTextField.vue';
 
 export default {
     name: 'TaskItem',
     components: {
-        CheckBox,
-        TextField,
+        AppCheckBox,
+        AppTextField,
     },
     props: {
-        id: { type: Number, required: true },
+        id: { type: String, required: true },
         name: { type: String, required: true },
         isEdit: { type: Boolean, required: true, default: false },
     },

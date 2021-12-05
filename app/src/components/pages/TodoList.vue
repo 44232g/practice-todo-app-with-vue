@@ -1,5 +1,5 @@
 <template>
-    <TodoList
+    <TodoListTemplate
         :tasks="computedTasks"
         @createTask="createTask"
         @updateTask="updateTask"
@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import TodoList from '../templates/TodoListTemplate.vue';
+import TodoListTemplate from '../templates/TodoListTemplate.vue';
 
 export default {
-    name: 'App',
+    name: 'TodoList',
     components: {
-        TodoList,
+        TodoListTemplate,
     },
     data() {
         return { tasks: [] };

@@ -19,7 +19,7 @@ import AppName from '../atoms/AppName.vue';
 import TaskList from '../organisms/TaskList.vue';
 
 export default {
-    name: 'App',
+    name: 'TodoListTemplate',
     components: {
         AppName,
         TaskList,
