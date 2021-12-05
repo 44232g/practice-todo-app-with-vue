@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import CheckBox from '../atoms/CheckBox.vue';
-import TextField from '../atoms/TextField.vue';
+import CheckBox from '../atoms/AppCheckBox.vue';
+import TextField from '../atoms/AppTextField.vue';
 
 export default {
     name: 'TaskItem',
